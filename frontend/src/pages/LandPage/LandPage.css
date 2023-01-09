@@ -1,0 +1,50 @@
+.home{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: url(../../images/image2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.home .content{
+    max-width: 60rem ;
+
+}
+
+.home .content h2{
+    font-size:  48px;
+   
+    color:black;
+    text-align: center;
+    
+}
+
+.home .content p{
+    font-size:  24px;
+    font-weight: lighter;
+    line-height:  1.8;
+    padding:1rem 0;
+    color:black;
+    text-align: center;
+}
+
+.btn{
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    display: inline-block;
+    color: #fff;
+
+    cursor: pointer;
+    background-color: #4CAF50;
+    border: none;
+  padding: 20px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-left: 380px; ;
+}
