@@ -1,19 +1,46 @@
-import { Button } from 'react-bootstrap'
-import React from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 import './Profile.css'
-import { deleteUser } from '../../redux/authSlice'
+import { currentUser, deleteUser } from '../../redux/authSlice'
+import { useRef, useState } from 'react';
+import axios from 'axios';
+
+
+
+
 
 function Profile() {
-  const user=useSelector(state=>state.auth.user)
+  const [file, setFile] = useState(null);
+  const user=useSelector((state)=>state.auth.user)
+  const inputRef=useRef()
+  
   const dispatch= useDispatch();
+
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    const config = {
+        headers: {
+            authorization: localStorage.getItem("token"),
+        },
+    };
+    try {
+        let data = new FormData();
+        data.append("myImage", file);
+        await axios.put("/user/upload", data, config);
+        dispatch(currentUser());
+    } catch (error) {
+        console.log(error);
+    }
+};
+
   const handleDelete = () => {
     if(window.confirm("Are you sure?")){
       dispatch(deleteUser(user._id),
       window.location.reload())
     }
   }
- 
+
+  
   return (
   
   <div className="containerr">
@@ -26,7 +53,11 @@ function Profile() {
             <div className="cardd-body">
               <div className="d-flex flex-column align-items-center text-center">
                 <img
-                  src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                  src= {
+                    user?.imageUrl
+                        ? `uploads/${user?.imageUrl}`
+                        : "https://bootdey.com/img/Content/avatar/avatar7.png"
+                }
                   alt="Admin"
                   className="rounded-circle"
                   width={150}
@@ -34,16 +65,23 @@ function Profile() {
                 <div className="mt-3">
                   <h4>{user?.username}</h4>
                   <p className="text-secondary mb-1">Full Stack Developer</p>
+                  <div>
+                  <button  className="btn btn-outline-primary" onClick={() => inputRef.current.click()} >upload</button>
+                  <input   type="file" hidden ref={inputRef} onChange={(e) => setFile(e.target.files[0]) } />
                   
-                  <button className="bttn btn-primary">Change photo</button>
-                 
+                 </div>
+                 <button  className="btn btn-outline-primary" onClick={handleEdit} >Edit</button>
+                  </div>
+                  
+                  
+                  
                 </div>
               </div>
             </div>
           </div>
           </div>
         <div className="col-md-8">
-          <div className="card mb-3">
+          <div className="carde mb-3">
             <div className="card-body">
               <div className="row">
                 <div className="col-sm-3">
@@ -73,25 +111,21 @@ function Profile() {
                 <div className="col-sm-9 text-secondary">{user?.height}</div>
               </div>
               <hr />
-              <div className="row">
-                <div className="col-sm-3">
-                  <h6 className="mb-0">Your BMI is</h6>
-                </div>
-                <div className="col-sm-9 text-secondary">
-                
-                </div>
-              </div>
-              <hr />
+              
+              
               <div className="row">
                 <div className="col-sm-12">
                   
-                  <Button  variant="danger" onClick={handleDelete}>Delete</Button>
+                  
+                  <button type="button" className="btn btn-danger" onClick={handleDelete}>Delete</button>
+                  <a href="../BMI" className="btn btn-primary" > Edit </a>
+
                   
                   
                     
                   
                   
-                </div>
+                
               </div>
             </div>
           </div>

@@ -29,7 +29,9 @@ const editUser=async()=>{
     weight:weight,
     height:height
   })
+
   navigate("/Profile")
+  window.location.reload()
 }
 
 

@@ -65,7 +65,9 @@ export const editUser = createAsyncThunk(
         console.log(id,{...data})
         try {
             const res = await axios.put(`/auth/updateUser/${id}`,data)
+           
             navigate("/Profile")
+        
             console.log(res.data) ;
             
         } catch (error) {

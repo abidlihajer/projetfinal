@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import  "./LandPage.css";
 
 function LandPage() {
@@ -9,7 +10,7 @@ function LandPage() {
       <p>
         Take our quiz to get a personal meal plan and acheive your weight goals
       </p>
-      <a href="../signup" className="btn" > Start your journey </a>
+      <Link to="../signup"> <button className="bttn btn-success" > Start your journey </button></Link>
     </div>
   </section>
 

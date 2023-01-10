@@ -29,8 +29,8 @@
     text-align: center;
 }
 
-.btn{
-    border-radius: 50px;
+.bttn{
+    border-radius: 100px;
     justify-content: center;
     align-items: center;
     margin-top: 1rem;
@@ -40,11 +40,12 @@
     cursor: pointer;
     background-color: #4CAF50;
     border: none;
-  padding: 20px 32px;
+  padding: 35px 62px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 25px;
   margin: 4px 2px;
   cursor: pointer;
-  margin-left: 380px; ;
+  margin-left:300px ;
+  
 }

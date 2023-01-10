@@ -7,12 +7,12 @@ import CardGroup from 'react-bootstrap/CardGroup';
 function Services() {
   return (
 
-    <CardGroup style={{width:'1200px', height:'500px' ,marginTop:'100px' ,marginLeft:'250px' ,marginBottom:'250px'}}>
+    <CardGroup style={{width:'1200px', height:'100vh' ,marginTop:'100px' ,marginLeft:'250px' ,marginBottom:'250px'}}>
       <Card >
         <Card.Img variant="top" src={foodimg}/>
         <Card.Body>
           <Card.Title style={{textAlign:'center'}}><h1>Personalized meal plan</h1></Card.Title>
-          <Card.Text style={{textAlign:'center',color:'black'}}>
+          <Card.Text style={{textAlign:'center',color:'black' }}>
           Сontains ingredients, step-by-step preparation, extra recipes to swap and nutritional value.
           </Card.Text>
         </Card.Body>
